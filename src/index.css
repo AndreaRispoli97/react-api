@@ -1,0 +1,50 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    padding: 15px;
+    font-size: 50px;
+}
+
+h3 {
+    font-size: 35px;
+}
+
+p {
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+.container {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.container-flex {
+    display: flex;
+    justify-content: center;
+    border: black 2px solid;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+.container-card {
+    border: solid black 2px;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.container-img {
+    padding: 20px;
+}
+
+img {
+    width: 300px;
+    height: auto;
+}
