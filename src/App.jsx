@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 
 
@@ -9,16 +9,26 @@ function App() {
     axios.get('https://www.freetestapi.com/api/v1/actresses')
       .then((res) => setActress(res.data))
   }
+
+  useEffect(fetchActress, []);
   console.log(actress);
   return (
     <>
       <div>
-        <button onClick={fetchActress}>Carica Todos</button>
-        <ul>
-          {actress.map((act) => (
-            <li key={act.id}>{act.name}</li>
-          ))}
-        </ul></div>
+        {actress.map(({ id, name, birth_year, nationality, most_famous_movies, awards, biography, image }) => (
+          <div key={id}>
+            <h3>{name}</h3>
+            <p>{birth_year}</p>
+            <span>{most_famous_movies}</span>
+            <span>{awards}</span>
+            <span>{biography}</span>
+            <div>
+              <img src={image} alt={name} />
+            </div>
+          </div>
+        ))}
+
+      </div>
     </>
   )
 }
