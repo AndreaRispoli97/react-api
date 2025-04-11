@@ -6,10 +6,10 @@ import { useState } from 'react'
 function App() {
   const [actress, setActress] = useState([])
   function fetchActress() {
-    axios.get('https://freetestapi.com/api/v1/actresses')
+    axios.get('https://www.freetestapi.com/api/v1/actresses')
       .then((res) => setActress(res.data))
   }
-
+  console.log(actress);
   return (
     <>
       <div>
