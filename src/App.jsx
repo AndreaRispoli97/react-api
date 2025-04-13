@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 function App() {
   const [actress, setActress] = useState([])
   const [actor, setActor] = useState([])
+  const [category, setCategory] = useState('')
   function fetchActress() {
     axios.get('https://www.freetestapi.com/api/v1/actresses')
       .then((res) => setActress(res.data))
@@ -16,16 +17,36 @@ function App() {
       .then((res) => setActor(res.data))
   }
 
-  useEffect(fetchActress, []);
-  useEffect(fetchActor, [])
-  console.log(actress);
-  console.log(actor);
+  // useEffect(fetchActress, []);
+  // useEffect(fetchActor, [])
+  useEffect(() => {
+    if (category === 'actor') {
+      setActress([])
+      fetchActor()
+    } else if (category === 'actress') {
+      setActor([])
+      fetchActress()
+    } else if (category === 'all') {
+      fetchActor()
+      fetchActress()
+    }
+  }, [category])
+
   return (
     <>
       <div className='container'>
-        <h1>Attrici Famose</h1>
+        <button
+          onClick={() => setCategory('actor')}
+          type='button'>Attori</button>
+        <button onClick={() => setCategory('actress')}
+          type='button'>Attrici</button>
+        <button onClick={() => setCategory('all')}
+          type='button'>Lista di tutti gli Attori</button>
+
         {actress.map(({ id, name, birth_year, nationality, most_famous_movies, awards, biography, image }) => (
+
           <div key={id} className='container-flex'>
+            <h1>Attrice</h1>
             <div className='container-card'>
               <h3>{name}</h3>
               <p>{birth_year}</p>
@@ -39,9 +60,10 @@ function App() {
             </div>
           </div>
         ))}
-        <h1>Attori famori</h1>
+
         {actor.map(({ id, name, birth_year, nationality, most_famous_movies, awards, biography, image }) => (
           <div key={id} className='container-flex'>
+            <h1>Attore</h1>
             <div className='container-card'>
               <h3>{name}</h3>
               <p>{birth_year}</p>
