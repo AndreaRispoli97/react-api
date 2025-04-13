@@ -7,6 +7,7 @@ function App() {
   const [actress, setActress] = useState([])
   const [actor, setActor] = useState([])
   const [category, setCategory] = useState('')
+  const [name, setName] = useState('')
   function fetchActress() {
     axios.get('https://www.freetestapi.com/api/v1/actresses')
       .then((res) => setActress(res.data))
@@ -17,8 +18,7 @@ function App() {
       .then((res) => setActor(res.data))
   }
 
-  // useEffect(fetchActress, []);
-  // useEffect(fetchActor, [])
+
   useEffect(() => {
     if (category === 'actor') {
       setActress([])
@@ -42,8 +42,9 @@ function App() {
           type='button'>Attrici</button>
         <button onClick={() => setCategory('all')}
           type='button'>Lista di tutti gli Attori</button>
+        <input type="text" value={name} onChange={e => setName(e.target.value)} />
 
-        {actress.map(({ id, name, birth_year, nationality, most_famous_movies, awards, biography, image }) => (
+        {actress.filter((person) => person.name.toLowerCase().includes(name.toLowerCase())).map(({ id, name, birth_year, nationality, most_famous_movies, awards, biography, image }) => (
 
           <div key={id} className='container-flex'>
             <h1>Attrice</h1>
@@ -61,7 +62,7 @@ function App() {
           </div>
         ))}
 
-        {actor.map(({ id, name, birth_year, nationality, most_famous_movies, awards, biography, image }) => (
+        {actor.filter((person) => person.name.toLowerCase().includes(name.toLowerCase())).map(({ id, name, birth_year, nationality, most_famous_movies, awards, biography, image }) => (
           <div key={id} className='container-flex'>
             <h1>Attore</h1>
             <div className='container-card'>
