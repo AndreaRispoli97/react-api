@@ -4,10 +4,19 @@
     box-sizing: border-box;
 }
 
+body {
+    background-image: url('/cielo_notturno.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+}
+
 h1 {
     text-align: center;
     padding: 15px;
     font-size: 50px;
+    color: white;
 }
 
 h3 {
@@ -22,12 +31,27 @@ p {
 .container {
     margin-left: 50px;
     margin-right: 50px;
+    text-align: center;
+}
+
+button {
+    padding: 10px;
+    margin: 15px;
+    border-radius: 10px;
+    font-size: 25px;
+}
+
+input {
+    padding: 10px;
+    margin: 15px;
+    border-radius: 10px;
+    font-size: 25px;
 }
 
 .container-flex {
     display: flex;
     justify-content: center;
-    border: black 2px solid;
+    /* border: black 2px solid; */
     border-radius: 10px;
     margin-bottom: 30px;
     padding: 20px;
@@ -35,7 +59,7 @@ p {
 
 .container-card {
     border: solid black 2px;
-    border-radius: 10px;
+    border-radius: 30px;
     padding: 20px;
     margin: 20px;
     background-color: cornsilk;
@@ -48,4 +72,5 @@ p {
 img {
     width: 300px;
     height: auto;
+    border-radius: 70px;
 }
